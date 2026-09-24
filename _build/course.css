@@ -196,3 +196,7 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
   *, *::before, *::after { animation:none !important; transition:none !important; }
   [data-rv] { opacity:1; transform:none; }
 }
+
+/* courses index banner: neutral (no blue) shading */
+.c-hero.idx .c-hero-bg { object-position:70% 35%; }
+.c-hero.idx::after { background:linear-gradient(95deg,rgba(12,12,12,.9) 0%,rgba(18,16,15,.72) 42%,rgba(20,18,16,.25) 78%,rgba(20,18,16,.08) 100%); }
