@@ -34,10 +34,10 @@ function head(title, desc, img, css = 'course.css') {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${esc(img)}">
-<meta name="theme-color" content="#262525">
+<meta name="theme-color" content="#071a30">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="../assets/brand/scoreqc-mark-64.png">
 <link rel="apple-touch-icon" href="../assets/brand/scoreqc-mark-180.png">
 <link rel="stylesheet" href="${css}">
@@ -47,7 +47,7 @@ function head(title, desc, img, css = 'course.css') {
 
 function nav(active) {
   const l = (href, label, key) => `<a href="${href}"${active === key ? ' class="on"' : ''}>${label}</a>`;
-  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../about/', 'ABOUT', 'about')].join('');
+  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../campus/', 'CAMPUS', 'campus')].join('');
   return `
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -77,7 +77,7 @@ function footer() {
 <footer class="foot">
   <div class="wrap foot-in">
     <a class="brand light" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services"></a>
-    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../about/">ABOUT</a><a href="../#contact">CONTACT</a></div>
+    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../#contact">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
 </footer>
@@ -216,7 +216,7 @@ fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage());
 COURSES.forEach(c => fs.writeFileSync(path.join(OUT, c.slug + '.html'), coursePage(c)));
 fs.copyFileSync(path.join(__dirname, 'course.css'), path.join(OUT, 'course.css'));
-const ABOUT = path.join(__dirname, '..', 'about');
-fs.mkdirSync(ABOUT, { recursive: true });
-fs.writeFileSync(path.join(ABOUT, 'index.html'), require('./about.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
+const CAMPUS = path.join(__dirname, '..', 'campus');
+fs.mkdirSync(CAMPUS, { recursive: true });
+fs.writeFileSync(path.join(CAMPUS, 'index.html'), require('./campus.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
 console.log('built', COURSES.length + 2, 'pages');

@@ -1,4 +1,4 @@
-// Content and template for /about/ (the "About us" page). Used by build.js.
+// Content and template for /campus/ (the Campus page, written like an About us page). Used by build.js.
 // Text is from the SCORE QC website's About page, lightly edited.
 
 const SPECIALITIES = [
@@ -41,16 +41,16 @@ module.exports = function aboutPage({ head, nav, footer, esc, waLink, ICON, PHON
       <div><h3>${esc(name)}</h3><small>${esc(body)}</small></div>
       <a class="btn line" href="${waLink('Hello SCORE QC, please share the upcoming ' + name + ' examination schedule.')}" target="_blank" rel="noopener">${ICON.wa} Ask for dates</a>
     </div>`;
-  return head('About Us | SCORE QC Training & Services',
+  return head('Campus | SCORE QC Training & Services',
       'SCORE QC Training & Services is an ISO 9001:2015 certified NDT and QA/QC institute in the heart of Thiruvananthapuram, with training, inspection services and placement support.',
-      'img/hero.jpg', '../courses/course.css') + nav('about') + `
+      'img/hero.jpg', '../courses/course.css') + nav('campus') + `
 <main>
 <section class="c-hero ab-hero">
   <img class="c-hero-bg" src="img/hero.jpg" alt="A SCORE QC faculty member teaching a full classroom of trainees">
   <div class="wrap c-hero-in">
-    <div class="crumb"><a href="../">HOME</a> / ABOUT</div>
+    <div class="crumb"><a href="../">HOME</a> / CAMPUS</div>
     <div class="kick light"><i></i>ISO 9001:2015 CERTIFIED</div>
-    <h1>About <span>SCORE QC.</span></h1>
+    <h1>Our <span>Campus.</span></h1>
     <p>An NDT and quality-control institute in the heart of Thiruvananthapuram, and one of the fast-growing companies in quality assurance and quality control.</p>
   </div>
 </section>
