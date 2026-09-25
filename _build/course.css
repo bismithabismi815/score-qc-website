@@ -197,6 +197,6 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
   [data-rv] { opacity:1; transform:none; }
 }
 
-/* courses index banner: navy shading on the left for text, subject kept bright */
-.c-hero.idx .c-hero-bg { object-position:72% 12%; }
+/* courses index banner: real classroom photo, navy shading on the left for text */
+.c-hero.idx .c-hero-bg { object-position:70% 40%; }
 .c-hero.idx::after { background:linear-gradient(95deg,rgba(4,16,31,.92) 0%,rgba(6,28,52,.78) 38%,rgba(8,36,64,.28) 62%,rgba(8,36,64,0) 80%); }

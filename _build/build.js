@@ -190,10 +190,10 @@ function indexPage() {
   </div>
 </section>`;
   }).join('\n');
-  return head('Courses | SCORE QC Training & Services', 'QA/QC, MEP, software, international certification, professional diploma and short term courses at SCORE QC, Kerala.', 'img/hero.jpg') + nav('courses') + `
+  return head('Courses | SCORE QC Training & Services', 'QA/QC, MEP, software, international certification, professional diploma and short term courses at SCORE QC, Kerala.', 'img/hero-real.jpg') + nav('courses') + `
 <main>
 <section class="c-hero idx">
-  <img class="c-hero-bg" src="img/hero.jpg?v=2" alt="Engineer in a hard hat inspecting stainless-steel pipework">
+  <img class="c-hero-bg" src="img/hero-real.jpg" alt="SCORE QC instructor leading a classroom session with trainees">
   <div class="wrap c-hero-in">
     <div class="crumb"><a href="../">HOME</a> / COURSES</div>
     <div class="kick light"><i></i>COURSES OFFERED</div>
