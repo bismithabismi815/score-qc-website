@@ -23,7 +23,7 @@ const ICON = {
   phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>'
 };
 
-function head(title, desc, img) {
+function head(title, desc, img, css = 'course.css') {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,14 +40,14 @@ function head(title, desc, img) {
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="../assets/brand/scoreqc-mark-64.png">
 <link rel="apple-touch-icon" href="../assets/brand/scoreqc-mark-180.png">
-<link rel="stylesheet" href="course.css">
+<link rel="stylesheet" href="${css}">
 </head>
 <body>`;
 }
 
 function nav(active) {
   const l = (href, label, key) => `<a href="${href}"${active === key ? ' class="on"' : ''}>${label}</a>`;
-  const links = [l('../#institute', 'INSTITUTE'), l('./', 'COURSES', 'courses'), l('../#campus', 'CAMPUS')].join('');
+  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../about/', 'ABOUT', 'about')].join('');
   return `
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -77,7 +77,7 @@ function footer() {
 <footer class="foot">
   <div class="wrap foot-in">
     <a class="brand light" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services"></a>
-    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="./">COURSES</a><a href="../#campus">CAMPUS</a><a href="../#contact">CONTACT</a></div>
+    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../about/">ABOUT</a><a href="../#contact">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
 </footer>
@@ -216,4 +216,7 @@ fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage());
 COURSES.forEach(c => fs.writeFileSync(path.join(OUT, c.slug + '.html'), coursePage(c)));
 fs.copyFileSync(path.join(__dirname, 'course.css'), path.join(OUT, 'course.css'));
-console.log('built', COURSES.length + 1, 'pages');
+const ABOUT = path.join(__dirname, '..', 'about');
+fs.mkdirSync(ABOUT, { recursive: true });
+fs.writeFileSync(path.join(ABOUT, 'index.html'), require('./about.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
+console.log('built', COURSES.length + 2, 'pages');
