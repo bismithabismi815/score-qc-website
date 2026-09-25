@@ -41,6 +41,7 @@ function head(title, desc, img, css = 'course.css') {
 <link rel="icon" type="image/png" href="../assets/brand/scoreqc-mark-64.png">
 <link rel="apple-touch-icon" href="../assets/brand/scoreqc-mark-180.png">
 <link rel="stylesheet" href="${css}">
+<script src="../assets/image-tuner.js" defer></script>
 </head>
 <body>`;
 }
