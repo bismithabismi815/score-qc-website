@@ -330,9 +330,7 @@
  },
  {
   "course": "courses-index-hero",
-  "photographer": "Jeswin Thomas",
-  "profile": "https://unsplash.com/@jeswinthomas",
-  "photo": "https://unsplash.com/photos/z4A6Vdg_4RE",
-  "alt": "man in gray hoodie wearing blue helmet holding black and orange bicycle handle bar"
+  "source": "AI-generated (Higgsfield gpt_image_2_5)",
+  "alt": "Engineer in a hard hat inspecting stainless-steel pipework"
  }
 ]
