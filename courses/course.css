@@ -45,6 +45,8 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
 .nav { position:fixed; top:0; left:0; right:0; z-index:60; background:rgba(255,255,255,.96); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
 .nav-in { display:flex; align-items:center; justify-content:space-between; height:80px; }
 .brand { display:flex; align-items:center; gap:13px; }
+.brand .logo { width:min(276px,58vw); height:auto; display:block; }
+.brand.light .logo { width:min(228px,58vw); }
 .mark { width:34px; height:34px; position:relative; flex-shrink:0; }
 .mark i { position:absolute; width:22px; height:22px; border-radius:50%; }
 .mark i:first-child { background:radial-gradient(circle at 35% 35%,#4fc15a,#2c7a36); top:0; left:0; }
@@ -198,5 +200,5 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
 }
 
 /* courses index banner: real classroom photo, navy shading on the left for text */
-.c-hero.idx .c-hero-bg { object-position:70% 40%; }
+.c-hero.idx .c-hero-bg { object-position:65% 22%; }
 .c-hero.idx::after { background:linear-gradient(95deg,rgba(4,16,31,.92) 0%,rgba(6,28,52,.78) 38%,rgba(8,36,64,.28) 62%,rgba(8,36,64,0) 80%); }

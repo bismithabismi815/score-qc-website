@@ -159,7 +159,6 @@ module.exports.COURSES = [
     overview: 'CSWIP (Certification Scheme for Welding Inspection & Personnel) is run by TWI, The Welding Institute, UK. CSWIP 3.1 starts your career as a certified welding inspector. SCORE QC is the only CSWIP course provider in Trivandrum, offering exam-oriented theory and practical sessions with a pass rate above 95%.',
     dur: null, elig: 'Minimum 3 years’ experience in NDT / welding-related operations', cert: 'TWI – The Welding Institute, United Kingdom',
     learn: ['Welding processes and terminology', 'Welding imperfections and defectology', 'Codes and standards', 'Visual inspection of welds', 'Destructive and non-destructive testing awareness', 'Practical plate and pipe assessment'],
-    link: { href: '../#cswip-page', label: 'Read the full CSWIP guide' },
     prompt: 'a South Asian certified welding inspector in a white hard hat using a stainless steel weld gauge on a large butt weld of a steel plate in a bright fabrication shop' },
   { slug: 'cswip-3-2', cat: 'intl', title: 'CSWIP 3.2 – Senior Welding Inspector', tag: 'TWI, United Kingdom',
     short: 'Step up from CSWIP 3.1 to senior welding inspector.',
