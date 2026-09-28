@@ -53,10 +53,10 @@ function nav(active) {
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo.png" alt="SCORE QC Training &amp; Services"></a>
-    <nav class="links">${links}<a href="#enquire" class="cta">ENQUIRE →</a></nav>
+    <nav class="links">${links}<a href="../contact/" class="cta${active === 'contact' ? ' on' : ''}">ENQUIRE →</a></nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
-  <div class="mnav">${links}<a href="#enquire">ENQUIRE →</a></div>
+  <div class="mnav">${links}<a href="../contact/">CONTACT US →</a></div>
 </header>`;
 }
 
@@ -78,7 +78,7 @@ function footer() {
 <footer class="foot">
   <div class="wrap foot-in">
     <a class="brand light" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services"></a>
-    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../#contact">CONTACT</a></div>
+    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../contact/">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
 </footer>
@@ -220,4 +220,6 @@ fs.copyFileSync(path.join(__dirname, 'course.css'), path.join(OUT, 'course.css')
 const CAMPUS = path.join(__dirname, '..', 'campus');
 fs.mkdirSync(CAMPUS, { recursive: true });
 fs.writeFileSync(path.join(CAMPUS, 'index.html'), require('./campus.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
+fs.mkdirSync(path.join(__dirname, '..', 'contact'), { recursive: true });
+fs.writeFileSync(path.join(__dirname, '..', 'contact', 'index.html'), require('./contact.js')({ head, nav, footer, esc, ICON, WA }));
 console.log('built', COURSES.length + 2, 'pages');
