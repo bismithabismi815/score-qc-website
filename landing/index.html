@@ -93,7 +93,7 @@
   /* HERO */
   .hero { display:grid; grid-template-columns:1fr 1fr; min-height:100vh; min-height:100svh; background:radial-gradient(ellipse 70% 60% at 0% 100%, rgba(8,148,176,.22), transparent 70%), linear-gradient(160deg,var(--char-2) 0%,var(--char) 55%,var(--char-3) 100%); color:#cfcfd2; }
   .hero-text { display:flex; flex-direction:column; padding:40px 72px 48px max(var(--pad), calc((100vw - var(--wrap)) / 2 + var(--pad))); }
-  .logo img { width:230px; height:auto; }
+  .logo img { height:120px; width:auto; }
   .hero-body { flex:1; display:flex; flex-direction:column; justify-content:center; padding:56px 0; max-width:560px; }
   .hero .kicker { animation:up .9s ease .15s both; }
   .hero h1 { font-size:clamp(34px,3.4vw,50px); line-height:1.1; color:#fff; text-transform:uppercase; letter-spacing:.005em; animation:up .9s ease .3s both; }
@@ -424,7 +424,7 @@
   /* FOOTER */
   footer { padding:44px 0; background:var(--char); border-top:4px solid var(--teal); }
   .foot { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; font-size:14.5px; color:#a8a8ac; }
-  .foot img { width:180px; height:auto; }
+  .foot img { height:84px; width:auto; }
   .foot a.site { color:var(--cyan-l); font-weight:700; }
   .foot a.site:hover { text-decoration:underline; }
 
@@ -502,7 +502,7 @@
   }
   @media (max-width:600px) {
     :root { --section:76px; --pad:18px; }
-    .logo img { width:160px; }
+    .logo img { height:90px; }
     .hero h1 { font-size:33px; }
     .hero p { font-size:17px; }
     .hero-cta .btn { flex:1 1 100%; }
@@ -546,7 +546,7 @@
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-text">
-    <a class="logo" href="#top" aria-label="SCORE QC Training &amp; Services – back to top"><img src="assets/img/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services" width="962" height="160"></a>
+    <a class="logo" href="#top" aria-label="SCORE QC Training &amp; Services – back to top"><img src="assets/img/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services" width="707" height="464"></a>
     <div class="hero-body">
       <div class="kicker">Inspection · NDT · Training · Engineering</div>
       <h1>Engineering confidence <i>Empowering global success</i></h1>
@@ -823,7 +823,7 @@
 
 <footer>
   <div class="wrap foot">
-    <img src="assets/img/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services" width="962" height="160">
+    <img src="assets/img/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services" width="707" height="464">
     <span>© <span id="yr">2026</span> SCORE QC Training &amp; Services · Trivandrum, Kerala</span>
   </div>
 </footer>
