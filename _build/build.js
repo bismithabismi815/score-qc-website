@@ -48,7 +48,7 @@ function head(title, desc, img, css = 'course.css') {
 
 function nav(active) {
   const l = (href, label, key) => `<a href="${href}"${active === key ? ' class="on"' : ''}>${label}</a>`;
-  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../campus/', 'CAMPUS', 'campus')].join('');
+  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../campus/', 'CAMPUS', 'campus'), l('../gallery/', 'GALLERY', 'gallery')].join('');
   return `
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -78,7 +78,7 @@ function footer() {
 <footer class="foot">
   <div class="wrap foot-in">
     <a class="brand light" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services"></a>
-    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../contact/">CONTACT</a></div>
+    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../gallery/">GALLERY</a><a href="../contact/">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
 </footer>
@@ -222,4 +222,6 @@ fs.mkdirSync(CAMPUS, { recursive: true });
 fs.writeFileSync(path.join(CAMPUS, 'index.html'), require('./campus.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
 fs.mkdirSync(path.join(__dirname, '..', 'contact'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, '..', 'contact', 'index.html'), require('./contact.js')({ head, nav, footer, esc, ICON, WA }));
-console.log('built', COURSES.length + 2, 'pages');
+fs.mkdirSync(path.join(__dirname, '..', 'gallery'), { recursive: true });
+fs.writeFileSync(path.join(__dirname, '..', 'gallery', 'index.html'), require('./gallery.js')({ head, nav, footer, esc }));
+console.log('built', COURSES.length + 3, 'pages');
