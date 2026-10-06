@@ -48,7 +48,7 @@ function head(title, desc, img, css = 'course.css') {
 
 function nav(active) {
   const l = (href, label, key) => `<a href="${href}"${active === key ? ' class="on"' : ''}>${label}</a>`;
-  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../campus/', 'CAMPUS', 'campus'), l('../gallery/', 'GALLERY', 'gallery')].join('');
+  const links = [l('../#institute', 'INSTITUTE'), l('../courses/', 'COURSES', 'courses'), l('../landing/', 'SERVICES'), l('../campus/', 'CAMPUS', 'campus'), l('../gallery/', 'GALLERY', 'gallery')].join('');
   return `
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -78,7 +78,7 @@ function footer() {
 <footer class="foot">
   <div class="wrap foot-in">
     <a class="brand light" href="../" aria-label="SCORE QC home"><img class="logo" src="../assets/brand/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services"></a>
-    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../campus/">CAMPUS</a><a href="../gallery/">GALLERY</a><a href="../contact/">CONTACT</a></div>
+    <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../landing/">SERVICES</a><a href="../campus/">CAMPUS</a><a href="../gallery/">GALLERY</a><a href="../contact/">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
 </footer>
