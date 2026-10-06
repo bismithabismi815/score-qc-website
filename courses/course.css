@@ -191,6 +191,8 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
   .practical { flex-direction:column; padding:24px; }
   .side-card { padding:24px; }
   .btn { white-space:normal; }
+  .filters { flex-wrap:wrap; overflow:visible; }
+  .filters button { padding:9px 14px; letter-spacing:.08em; }
   .wa-fab { right:16px; bottom:16px; }
   .foot-in { flex-direction:column; text-align:center; }
 }
@@ -288,4 +290,15 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
   .ct-quick, .ct-main, .ct-row { grid-template-columns:1fr; }
   .ct-main { padding-top:50px; }
   .ct-form { position:static; padding:30px 22px; }
+}
+
+/* phones and small tablets: the hero text spans the full photo, so darken it evenly and lift the small labels */
+@media (max-width:940px) {
+  .c-hero::after, .c-hero.idx::after { background:linear-gradient(180deg,rgba(4,16,31,.5) 0%,rgba(4,16,31,.78) 35%,rgba(4,16,31,.92) 100%); }
+  .c-hero-in { text-shadow:0 2px 14px rgba(0,0,0,.55); }
+  .c-hero .kick, .crumb { letter-spacing:.14em; line-height:1.6; }
+  .c-hero .kick { color:#b8f0ae; font-size:12.5px; }
+  .crumb a { color:#b8f0ae; }
+  .c-hero p { color:#eef4f8; }
+  .hero-chips span { background:rgba(4,16,31,.55); border-color:rgba(255,255,255,.28); }
 }

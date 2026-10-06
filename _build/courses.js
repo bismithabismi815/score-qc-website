@@ -1,11 +1,12 @@
 // Course catalogue for the SCORE QC site. Details come from the SCORE QC brochure and scoreqc.com course pages.
 // `dur` / `elig` left null where the source gives none: the page then says "Ask a counsellor".
 module.exports.CATEGORIES = [
+  { id: 'premium', name: 'Premium Programmes', short: 'Premium', blurb: 'Comprehensive, industry-focused certified programmes that prepare you for QA/QC and inspection roles on global projects.' },
+  { id: 'intl', name: 'International Certification Courses', short: 'International', blurb: 'Exam-focused preparation for TWI, AWS, API, AMPP (NACE) and ISO credentials.' },
   { id: 'qaqc', name: 'QA/QC Courses', short: 'QA/QC', blurb: 'Inspection, testing and quality control for mechanical, civil and electrical projects.' },
+  { id: 'diploma', name: 'Professional Diploma Courses', short: 'Diplomas', blurb: 'Longer career programmes that combine theory, software and hands-on training.' },
   { id: 'mep', name: 'MEP Courses', short: 'MEP', blurb: 'Mechanical, electrical and plumbing design for buildings and industrial plants.' },
   { id: 'software', name: 'Software Courses', short: 'Software', blurb: 'Industry-standard design, drafting, planning and analysis software.' },
-  { id: 'intl', name: 'International Certification Courses', short: 'International', blurb: 'Exam-focused preparation for TWI, AWS, API, AMPP (NACE) and ISO credentials.' },
-  { id: 'diploma', name: 'Professional Diploma Courses', short: 'Diplomas', blurb: 'Longer career programmes that combine theory, software and hands-on training.' },
   { id: 'short', name: 'Short Term Courses', short: 'Short Term', blurb: 'Focused programmes to add a practical skill quickly.' }
 ];
 
@@ -13,6 +14,22 @@ const STED = 'STED Council, Govt. of India';
 const ASNT = 'ASNT (American Society for Nondestructive Testing)';
 
 module.exports.COURSES = [
+  // ---------------- PREMIUM (details from the COGIP and CMQIP flyers) ----------------
+  { slug: 'oil-gas-industry-professional', cat: 'premium', title: 'Certified Oil & Gas Industry Professional (COGIP)', tag: 'Premium · 7-Month Programme',
+    short: 'A 7-month comprehensive industry programme: oil & gas technology, QA/QC & NDT Level II, HVAC, fire & utility systems, HSE and documentation.',
+    overview: 'A seven-month comprehensive programme for a career in the oil and gas industry, built on advanced industry exposure, global standards and better careers. It brings together oil and gas technology, QA/QC and NDT Level II, industrial HVAC, fire and utility systems, industrial safety (HSE) and engineering documentation, with exposure to refineries, LNG plants, offshore platforms, pipelines, petrochemical plants and EPC projects.',
+    dur: '7 months', elig: null, cert: ASNT + ' · ' + STED,
+    learn: ['Oil & Gas Technology', 'QA/QC & NDT Level II', 'Industrial HVAC Systems', 'Fire & Utility Systems', 'Industrial Safety (HSE)', 'Engineering Documentation'],
+    note: 'Career opportunities: QA/QC Inspector, Welding Inspector, NDT Technician and Documentation Engineer.',
+    prompt: 'an oil refinery lit up at dusk, reflected in calm water' },
+  { slug: 'mechanical-qaqc-industrial-professional', cat: 'premium', title: 'Certified Mechanical QA/QC Industrial Professional (CMQIP)', tag: 'Premium · 3-Month Programme',
+    short: 'A 3-month industry-focused programme that builds practical QA/QC skills for global projects.',
+    overview: 'A three-month industry-focused programme that builds practical QA/QC skills for global projects. It covers mechanical QA/QC, welding inspection, piping and structural QA/QC, NDT fundamentals and engineering documentation, and finishes with interview preparation. Training is industry-oriented, built on practical project knowledge and international standards, with placement assistance.',
+    dur: '3 months', elig: null, cert: ASNT + ' · ' + STED,
+    learn: ['Mechanical QA/QC', 'Welding Inspection', 'Piping & Structural QA/QC', 'NDT Fundamentals', 'Engineering Documentation', 'Interview Preparation'],
+    note: 'Career opportunities: Mechanical QA/QC Engineer, QA/QC Inspector, Welding Inspector and Documentation Engineer.',
+    prompt: 'an inspector in a white hard hat and navy coveralls testing the shell of a large storage tank' },
+
   // ---------------- QA/QC ----------------
   { slug: 'asnt-level-2-ndt', cat: 'qaqc', title: 'ASNT Level II – NDT', tag: 'Non-Destructive Testing',
     short: 'Theory and hands-on practice in the most widely used NDT methods, to ASNT Level I & II.',
