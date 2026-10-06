@@ -19,7 +19,7 @@ const AFFILIATIONS = [
   ['aff-asnt.png', 'ASNT', 'The American Society for Nondestructive Testing'],
   ['aff-msme.png', 'MSME', 'Government of India'],
   ['aff-sted.png', 'STED Council', 'Government of India'],
-  ['aff-iso.png', 'ISO 9001:2015', 'International Organization for Standardization'],
+  ['aff-iso.png', 'ISO 9001:2026', 'International Organization for Standardization'],
 ];
 
 const EXAMS = [
@@ -42,14 +42,14 @@ module.exports = function aboutPage({ head, nav, footer, esc, waLink, ICON, PHON
       <a class="btn line" href="${waLink('Hello SCORE QC, please share the upcoming ' + name + ' examination schedule.')}" target="_blank" rel="noopener">${ICON.wa} Ask for dates</a>
     </div>`;
   return head('Campus | SCORE QC Training & Services',
-      'SCORE QC Training & Services is an ISO 9001:2015 certified NDT and QA/QC institute in the heart of Thiruvananthapuram, with training, inspection services and placement support.',
+      'SCORE QC Training & Services is an ISO 9001:2026 certified NDT and QA/QC institute in the heart of Thiruvananthapuram, with training, inspection services and placement support.',
       'img/hero.jpg', '../courses/course.css') + nav('campus') + `
 <main>
 <section class="c-hero ab-hero">
   <img class="c-hero-bg" src="img/hero.jpg" alt="A SCORE QC faculty member teaching a full classroom of trainees">
   <div class="wrap c-hero-in">
     <div class="crumb"><a href="../">HOME</a> / CAMPUS</div>
-    <div class="kick light"><i></i>ISO 9001:2015 CERTIFIED</div>
+    <div class="kick light"><i></i>ISO 9001:2026 CERTIFIED</div>
     <h1>Our <span>Campus.</span></h1>
     <p>An NDT and quality-control institute in the heart of Thiruvananthapuram, and one of the fast-growing companies in quality assurance and quality control.</p>
   </div>
@@ -61,7 +61,7 @@ module.exports = function aboutPage({ head, nav, footer, esc, waLink, ICON, PHON
     <h2>Trained and nurtured by people who inspect for a living.</h2>
     <p class="lead">SCORE QC Training &amp; Services is the best NDT institute in Trivandrum. Situated in the heart of Thiruvananthapuram city, we offer easy access and a well-equipped place to study. Our students are trained and mentored by experienced faculty with wide, multidisciplinary backgrounds.</p>
     <p>We keep raising our standards and respond to what industry needs. Backed by expert faculty, technicians and engineers known for their experience and professionalism, we open doors to the wide and growing opportunities in oil &amp; gas, refineries and other industrial fields.</p>
-    <p>We also provide NDT and quality-control services to the rigging, refining, construction and power-generation industries. Our certified technicians deliver accurate, high-level inspections that improve reliability and reduce equipment downtime. Our ISO 9001:2015 quality management system drives continual improvement in our training and services, so the work is reliable and safely executed.</p>
+    <p>We also provide NDT and quality-control services to the rigging, refining, construction and power-generation industries. Our certified technicians deliver accurate, high-level inspections that improve reliability and reduce equipment downtime. Our ISO 9001:2026 quality management system drives continual improvement in our training and services, so the work is reliable and safely executed.</p>
   </div>
   <figure class="ab-fig" data-rv><img src="img/faculty.jpg" alt="A SCORE QC instructor teaching at the whiteboard" loading="lazy"></figure>
 </section>
