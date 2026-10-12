@@ -294,8 +294,9 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
 
 /* phones and small tablets: the hero text spans the full photo, so darken it evenly and lift the small labels */
 @media (max-width:940px) {
-  .c-hero::after, .c-hero.idx::after { background:linear-gradient(180deg,rgba(4,16,31,.5) 0%,rgba(4,16,31,.78) 35%,rgba(4,16,31,.92) 100%); }
-  .c-hero-in { text-shadow:0 2px 14px rgba(0,0,0,.55); }
+  .c-hero::after, .c-hero.idx::after { background:linear-gradient(180deg,rgba(4,16,31,.12) 0%,rgba(4,16,31,.25) 28%,rgba(4,16,31,.62) 55%,rgba(4,16,31,.86) 100%); }
+  .c-hero-in { text-shadow:0 1px 3px rgba(0,0,0,.5),0 2px 18px rgba(0,0,0,.6); }
+  .c-hero h1 span { text-shadow:none; filter:drop-shadow(0 2px 8px rgba(0,0,0,.55)); }
   .c-hero .kick, .crumb { letter-spacing:.14em; line-height:1.6; }
   .c-hero .kick { color:#b8f0ae; font-size:12.5px; }
   .crumb a { color:#b8f0ae; }
