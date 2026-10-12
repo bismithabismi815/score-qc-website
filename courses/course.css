@@ -301,6 +301,14 @@ h2 { font-size:clamp(26px,3vw,38px); line-height:1.12; font-weight:700; }
   .crumb a { color:#b8f0ae; }
   .c-hero p { color:#eef4f8; }
   .hero-chips span { background:rgba(4,16,31,.55); border-color:rgba(255,255,255,.28); }
+  .ct-hero p { color:#eef4f8; }
+}
+/* phones: roomier hero headings and larger intro text */
+@media (max-width:640px) {
+  .c-hero h1 { font-size:33px; line-height:1.14; letter-spacing:0; }
+  .ct-hero h1 { font-size:36px; line-height:1.12; }
+  .c-hero p, .ct-hero p { font-size:17px; line-height:1.65; margin-top:16px; }
+  .c-hero .kick, .crumb { font-size:12px; }
 }
 
 /* gallery */
