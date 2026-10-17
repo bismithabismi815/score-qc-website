@@ -5,7 +5,7 @@ const OFFICES = [
   { city: 'Trivandrum', tag: 'HEAD OFFICE & CAMPUS', addr: 'Nandanam Towers, Vanross Junction, Palayam, Thiruvananthapuram, Kerala',
     phone: '0471 40 66566', tel: '04714066566', map: 'Nandanam Towers, Vanross Junction, Palayam, Thiruvananthapuram' },
   { city: 'Cochin', tag: 'BRANCH OFFICE', addr: 'Chandrika Building, Pipeline Road, Palarivattom, Kochi, Kerala',
-    phone: '+91 80860 60565', tel: '+918086060565', map: 'Chandrika Building, Pipeline Road, Palarivattom, Kochi' },
+    phone: '+91 80860 60565', tel: '+918086060565', email: 'cochin@scoreqc.com', map: 'Chandrika Building, Pipeline Road, Palarivattom, Kochi' },
 ];
 
 const INTERESTS = ['International Certifications', 'QA/QC Courses', 'MEP Courses', 'Software Courses',
@@ -21,6 +21,7 @@ module.exports = function contactPage({ head, nav, footer, esc, ICON, WA }) {
         <h3>${esc(o.city)}</h3>
         <p class="ct-line">${pin}<span>${esc(o.addr)}</span></p>
         <p class="ct-line">${ICON.phone}<a href="tel:${o.tel}">${esc(o.phone)}</a></p>
+        ${o.email ? `<p class="ct-line">${mail}<a href="mailto:${o.email}">${esc(o.email)}</a></p>` : ''}
         <div class="ct-btns">
           <a class="btn green" href="tel:${o.tel}">${ICON.phone} Call</a>
           <a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(o.map)}" target="_blank" rel="noopener">${pin} Directions</a>
@@ -42,6 +43,7 @@ module.exports = function contactPage({ head, nav, footer, esc, ICON, WA }) {
       <a href="https://wa.me/${WA}" target="_blank" rel="noopener">${ICON.wa}<span><small>WHATSAPP</small>+91 80860 60565</span></a>
       <a href="tel:04714066566">${ICON.phone}<span><small>CALL</small>0471 40 66566</span></a>
       <a href="mailto:info@scoreqc.com">${mail}<span><small>EMAIL</small>info@scoreqc.com</span></a>
+      <a href="mailto:services@scoreqc.com">${mail}<span><small>INSPECTION SERVICES</small>services@scoreqc.com</span></a>
     </div>
   </div>
 </section>

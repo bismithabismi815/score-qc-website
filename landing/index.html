@@ -427,6 +427,9 @@
   .foot img { height:84px; width:auto; }
   .foot a.site { color:var(--cyan-l); font-weight:700; }
   .foot a.site:hover { text-decoration:underline; }
+  .foot-legal { display:flex; gap:12px 22px; flex-wrap:wrap; margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,.1); font-size:13px; }
+  .foot-legal a { color:#a8a8ac; }
+  .foot-legal a:hover { color:var(--cyan-l); }
 
   /* floating */
   .wa { position:fixed; right:26px; bottom:26px; z-index:40; width:58px; height:58px; border-radius:50%; background:#25D366; color:#fff; display:grid; place-items:center; box-shadow:0 12px 28px rgba(37,211,102,.4); transition:transform .3s ease; }
@@ -535,6 +538,7 @@
     .mbar { display:flex; }
     footer { padding-bottom:100px; }
     .foot { flex-direction:column; text-align:center; }
+    .foot-legal { justify-content:center; }
   }
   @media (prefers-reduced-motion:reduce) {
     *, *::before, *::after { animation:none !important; transition:none !important; }
@@ -828,6 +832,7 @@
     <img src="assets/img/scoreqc-logo-white.png" alt="SCORE QC Training &amp; Services" width="707" height="464">
     <span>© <span id="yr">2026</span> SCORE QC Training &amp; Services · Trivandrum, Kerala · <a class="site" href="../">Visit our main website →</a></span>
   </div>
+  <div class="wrap foot-legal"><a href="../docs/score-brochure.pdf" download>Download brochure (PDF)</a><a href="../privacypolicy/">Privacy Policy</a><a href="../termsandconditions/">Terms &amp; Conditions</a><a href="../disclaimer/">Disclaimer</a></div>
 </footer>
 
 <a class="wa" href="https://wa.me/917012756114" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>

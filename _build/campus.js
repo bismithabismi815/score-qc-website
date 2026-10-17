@@ -29,6 +29,20 @@ const EXAMS = [
   ['AWS', 'American Welding Society'],
 ];
 
+// Student testimonials, word for word from the old scoreqc.com homepage.
+const TESTIMONIALS = [
+  ['SCORE QC helped me to grow better professionally and personally and I would like to thank all the faculties and staff for their sincere efforts. I had a good time with SCORE.', 'Akhil A.U', 'Professional Diploma in Oil & Gas'],
+  ['Without the effort taken by SCORE QC, I would not have been successful. Cleared the exams in my first attempt. Hope this institution will grow high. SCORE QC is the best.', 'Akhil S Nair', 'CSWIP 3.1 Welding Inspection'],
+  ['SCORE QC has provided me a platform from where I am able to make my standing in the engineering sector.', 'Lijin Mathew', 'MEP Designing & Drafting'],
+  ['The experiences I got from SCORE QC are very good. I was taught from the basic concepts to the professional level which helped me in gaining good subject knowledge and cracking interviews.', 'Shibindas T', 'Mechanical QA/QC'],
+  ['The centre sincerely aims at creating success for every student studying there. I and our batch thank SCORE QC for giving us a successful career.', 'Abhijith V.R', 'Mechanical QA/QC'],
+  ['When I joined SCORE, I was anxious about my future. Over the time of my preparatory classes I became confident that I could clear the exam and I was successful. Thank you SCORE QC.', 'Bipin Raju', 'CSWIP 3.1 Welding Inspection'],
+  ['Experienced faculty with good teaching experience and adequate industry exposure. Very good placement plans, valid certifications at low cost. I thank SCORE QC for providing these qualities.', 'Sujith M', 'MEP Designing & Drafting'],
+  ['SCORE QC has made the best efforts to provide the facilities like faculty, hands-on training, etc. and helped me in achieving my goal.', 'Suraj K', 'CSWIP 3.1 Welding Inspection'],
+  ['It gives me great pleasure to say with pride that I took my certifications from SCORE QC. The relationship between faculties and students is very cordial, which helped me to excel in my area of interest.', 'Tito Fernandez L', 'CSWIP 3.1 Welding Inspection'],
+  ['I was confused about my career until I joined SCORE QC. The motivation along with the teaching by the faculties gave me enough confidence to secure my career.', 'Anilkumar A C', 'CSWIP 3.1 Welding Inspection'],
+];
+
 const CAMPUS = [
   ['campus-k02.jpg', 'Classroom session with a whiteboard lesson'],
   ['campus-a16.jpg', 'Faculty member teaching a batch'],
@@ -121,13 +135,21 @@ module.exports = function aboutPage({ head, nav, footer, esc, waLink, ICON, PHON
   <figure class="ab-fig" data-rv><img src="img/placement.jpg" alt="SCORE QC team on site at an industrial plant" loading="lazy"></figure>
 </section>
 
+<section class="ab-tst">
+  <div class="wrap">
+    <div class="rel-head" data-rv><div><div class="kick light">[ 07 — STUDENT VOICES ]</div><h2>In our students' words.</h2></div></div>
+    <div class="ab-tst-grid">${TESTIMONIALS.map(([q, n, c]) => `<figure class="ab-tst-card" data-rv><blockquote>“${esc(q)}”</blockquote><figcaption><b>${esc(n)}</b><small>${esc(c)}</small></figcaption></figure>`).join('')}</div>
+  </div>
+</section>
+
 <section class="related ab-exams-sec">
   <div class="wrap">
-    <div class="rel-head" data-rv><div><div class="kick">[ 07 — EXAMINATIONS ]</div><h2>International certification exam schedules.</h2></div><a class="more" href="../courses/#intl">International courses →</a></div>
+    <div class="rel-head" data-rv><div><div class="kick">[ 08 — EXAMINATIONS ]</div><h2>International certification exam schedules.</h2></div><a class="more" href="../courses/#intl">International courses →</a></div>
+    <p class="ab-exam-help" data-rv><b>Examination registration assistance:</b> we help candidates register for their international certification exams.</p>
     <div class="ab-exams">${EXAMS.map(exam).join('')}</div>
     <div class="ab-brochure" data-rv>
       <div><h3>Download our brochure</h3><p>Get the detailed brochure with all our courses and services.</p></div>
-      <a class="btn green" href="${waLink('Hello SCORE QC, please send me your brochure.')}" target="_blank" rel="noopener">${ICON.wa} Get the brochure</a>
+      <a class="btn green" href="../docs/score-brochure.pdf" download>Download PDF ↓</a>
     </div>
   </div>
 </section>

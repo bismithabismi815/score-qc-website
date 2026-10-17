@@ -81,6 +81,7 @@ function footer() {
     <div class="foot-links"><a href="../#institute">INSTITUTE</a><a href="../courses/">COURSES</a><a href="../landing/">SCORE GLOBAL</a><a href="../campus/">CAMPUS</a><a href="../gallery/">GALLERY</a><a href="../contact/">CONTACT</a></div>
     <div class="copy">© <span id="yr">2026</span> SCORE_QC_TRAINING_&amp;_SERVICES</div>
   </div>
+  <div class="wrap foot-legal"><a href="../docs/score-brochure.pdf" download>DOWNLOAD BROCHURE (PDF)</a><a href="../privacypolicy/">PRIVACY POLICY</a><a href="../termsandconditions/">TERMS &amp; CONDITIONS</a><a href="../disclaimer/">DISCLAIMER</a></div>
 </footer>
 <a class="wa-fab" href="${waLink('Hello SCORE QC')}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${ICON.wa}</a>
 <script>
@@ -224,4 +225,9 @@ fs.mkdirSync(path.join(__dirname, '..', 'contact'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, '..', 'contact', 'index.html'), require('./contact.js')({ head, nav, footer, esc, ICON, WA }));
 fs.mkdirSync(path.join(__dirname, '..', 'gallery'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, '..', 'gallery', 'index.html'), require('./gallery.js')({ head, nav, footer, esc }));
-console.log('built', COURSES.length + 3, 'pages');
+const legal = require('./legal.js')({ head, nav, footer, esc });
+legal.forEach(p => {
+  fs.mkdirSync(path.join(__dirname, '..', p.dir), { recursive: true });
+  fs.writeFileSync(path.join(__dirname, '..', p.dir, 'index.html'), p.html);
+});
+console.log('built', COURSES.length + 4 + legal.length, 'pages');
