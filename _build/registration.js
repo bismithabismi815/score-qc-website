@@ -1,8 +1,9 @@
 // Content and template for /registration/ (candidate exam registration). Used by build.js.
-// The site has no server, so the form posts to FormSubmit, which emails each registration to info@scoreqc.com.
-// FormSubmit sends a one-time activation email to that address on the first submission; nothing is delivered until it is confirmed.
+// The site has no server, so the form posts to SCORE QC's own PHP script on the task-portal hosting
+// (source in _server/registration/), which emails each registration to info@scoreqc.com via their mail server.
 
 const TO = 'info@scoreqc.com';
+const ENDPOINT = 'https://taskportal.scoreqc.com/registration/submit.php';
 
 const COURSES = ['CSWIP 3.0 – Visual Welding Inspector', 'CSWIP 3.1 – Welding Inspector', 'CSWIP 3.2 – Senior Welding Inspector',
   'AWS to CSWIP Bridging', 'BGAS Grade 2 – Painting Inspector', 'BGAS Grade 1 – Senior Painting Inspector',
@@ -40,43 +41,43 @@ module.exports = function registrationPage({ head, nav, footer, esc }) {
 
   <form class="ct-form rg-form" id="rg-form" novalidate>
     <h2>Course details</h2>
-    ${field('Course Title', `<select name="Course Title" required>${opts(COURSES)}</select>`, true)}
-    ${field('TWI Candidate ID', '<input name="TWI Candidate ID" placeholder="Not required for initial">')}
+    ${field('Course Title', `<select name="course_title" required>${opts(COURSES)}</select>`, true)}
+    ${field('TWI Candidate ID', '<input name="twi_id" placeholder="Not required for initial">')}
     <div class="ct-row">
-      ${field('Seminar Date', '<input name="Seminar Date" type="date" required>', true)}
-      ${field('Date of Examination', '<input name="Date of Examination" type="date" required>', true)}
+      ${field('Seminar Date', '<input name="seminar_date" type="date" required>', true)}
+      ${field('Date of Examination', '<input name="exam_date" type="date" required>', true)}
     </div>
 
     <h2>Personal details</h2>
-    ${field('Full Name', '<input name="Full Name" required autocomplete="name" placeholder="As required on certificate">', true)}
+    ${field('Full Name', '<input name="full_name" required autocomplete="name" placeholder="As required on certificate">', true)}
     <div class="ct-row">
-      ${field('Date of Birth', '<input name="Date of Birth" type="date" required id="rg-dob">', true)}
-      ${field('Age', '<input name="Age" type="number" min="15" max="80" inputmode="numeric" required id="rg-age">', true)}
+      ${field('Date of Birth', '<input name="dob" type="date" required id="rg-dob">', true)}
+      ${field('Age', '<input name="age" type="number" min="15" max="80" inputmode="numeric" required id="rg-age">', true)}
     </div>
     ${field('Email', '<input name="email" type="email" required autocomplete="email" class="rg-keep">', true)}
     <div class="ct-row">
-      ${field('Contact Number', '<input name="Contact Number" type="tel" required autocomplete="tel">', true)}
-      ${field('Alternate Contact Number', '<input name="Alternate Contact Number" type="tel" required>', true)}
+      ${field('Contact Number', '<input name="phone" type="tel" required autocomplete="tel">', true)}
+      ${field('Alternate Contact Number', '<input name="alt_phone" type="tel" required>', true)}
     </div>
-    ${field('Permanent Address', '<textarea name="Permanent Address" rows="3" required></textarea>', true)}
-    ${field('Pin Code', '<input name="Permanent Pin Code" inputmode="numeric" maxlength="6" required>', true)}
-    ${field('Communication Address', '<textarea name="Communication Address" rows="3"></textarea>')}
-    ${field('Pin Code', '<input name="Communication Pin Code" inputmode="numeric" maxlength="6">')}
+    ${field('Permanent Address', '<textarea name="perm_address" rows="3" required></textarea>', true)}
+    ${field('Pin Code', '<input name="perm_pin" inputmode="numeric" maxlength="6" required>', true)}
+    ${field('Communication Address', '<textarea name="comm_address" rows="3"></textarea>')}
+    ${field('Pin Code', '<input name="comm_pin" inputmode="numeric" maxlength="6">')}
 
     <h2>Qualification</h2>
-    ${field('Course Completed', `<select name="Course Completed" required>${opts(QUALIFICATIONS)}</select>`, true)}
-    ${field('Date of Completion', '<input name="Date of Completion" type="date" required>', true)}
+    ${field('Course Completed', `<select name="qualification" required>${opts(QUALIFICATIONS)}</select>`, true)}
+    ${field('Date of Completion', '<input name="completion_date" type="date" required>', true)}
     <fieldset class="rg-radio"><legend>NDT Certification</legend>
-      <label><input type="radio" name="NDT Certification" value="No"> No</label>
-      <label><input type="radio" name="NDT Certification" value="Yes"> Yes</label>
+      <label><input type="radio" name="ndt_certification" value="No"> No</label>
+      <label><input type="radio" name="ndt_certification" value="Yes"> Yes</label>
     </fieldset>
 
     <h2>Experience, if any</h2>
-    ${field('Company Name', '<input name="Company Name">')}
-    ${field('Designation', '<input name="Designation">')}
+    ${field('Company Name', '<input name="company">')}
+    ${field('Designation', '<input name="designation">')}
     <div class="ct-row">
-      ${field('From', '<input name="Experience From" type="date">')}
-      ${field('To', '<input name="Experience To" type="date">')}
+      ${field('From', '<input name="exp_from" type="date">')}
+      ${field('To', '<input name="exp_to" type="date">')}
     </div>
 
     <input type="text" name="_honey" class="rg-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -99,9 +100,9 @@ module.exports = function registrationPage({ head, nav, footer, esc }) {
     f.querySelectorAll('[required]').forEach(function(el){el.classList.remove('rg-bad');if(!bad&&!String(el.value).trim()){bad=el;}});
     if(bad){bad.classList.add('rg-bad');return [bad,'Please fill in '+bad.closest('label').firstChild.textContent.trim()+'.'];}
     var em=f.elements.email;if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(em.value.trim()))return [em,'Please enter a valid email address.'];
-    var ph=[f.elements['Contact Number'],f.elements['Alternate Contact Number']];
+    var ph=[f.elements.phone,f.elements.alt_phone];
     for(var i=0;i<ph.length;i++)if(ph[i].value.replace(/\\D/g,'').length<10)return [ph[i],'Please enter a valid 10-digit phone number.'];
-    var pin=f.elements['Permanent Pin Code'];if(!/^\\d{6}$/.test(pin.value.trim()))return [pin,'Please enter a 6-digit pin code.'];
+    var pin=f.elements.perm_pin;if(!/^\\d{6}$/.test(pin.value.trim()))return [pin,'Please enter a 6-digit pin code.'];
     return null;
   }
   f.addEventListener('submit',function(e){
@@ -110,14 +111,11 @@ module.exports = function registrationPage({ head, nav, footer, esc }) {
     err.textContent='';
     var data={};new FormData(f).forEach(function(v,k){v=String(v).trim();data[k]=(k==='email'||k==='_honey')?v:v.toUpperCase();});
     f.querySelectorAll('input[type=date]').forEach(function(el){if(el.value)data[el.name]=el.value.split('-').reverse().join('/');});
-    if(!data['NDT Certification'])data['NDT Certification']='NOT SPECIFIED';
-    data._subject='Candidate registration: '+data['Full Name']+' – '+data['Course Title'];
-    data._template='table';data._captcha='false';
     btn.disabled=true;btn.textContent='Sending…';
-    fetch('https://formsubmit.co/ajax/${TO}',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||'failed');});})
+    fetch('${ENDPOINT}',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok){var e=new Error('failed');e.msg=(r.status===422||r.status===429)&&j.message;throw e;}});})
       .then(function(){f.hidden=true;document.getElementById('rg-done').hidden=false;window.scrollTo({top:document.getElementById('rg-done').offsetTop-120,behavior:'smooth'});})
-      .catch(function(){err.innerHTML='Sorry, your registration could not be sent. Please try again, or email it to <a href="mailto:${TO}">${TO}</a>.';btn.disabled=false;btn.textContent='Submit registration';});
+      .catch(function(e){if(e.msg)err.textContent=e.msg;else err.innerHTML='Sorry, your registration could not be sent. Please try again, or email it to <a href="mailto:${TO}">${TO}</a>.';btn.disabled=false;btn.textContent='Submit registration';});
   });
 })();
 </script>` + footer();

@@ -46,43 +46,43 @@
 
   <form class="ct-form rg-form" id="rg-form" novalidate>
     <h2>Course details</h2>
-    <label>Course Title<b class="rg-req" aria-hidden="true">*</b><select name="Course Title" required><option value="" selected disabled></option><option>CSWIP 3.0 – Visual Welding Inspector</option><option>CSWIP 3.1 – Welding Inspector</option><option>CSWIP 3.2 – Senior Welding Inspector</option><option>AWS to CSWIP Bridging</option><option>BGAS Grade 2 – Painting Inspector</option><option>BGAS Grade 1 – Senior Painting Inspector</option><option>AWS – Certified Welding Inspector (CWI)</option><option>API 510 / 570 / 653 / 571 / 577 / 580 / 936 / 1169</option><option>NACE CIP Level 1</option><option>NACE CIP Level 2</option><option>ISO Lead Auditor</option><option>Other</option></select></label>
-    <label>TWI Candidate ID<input name="TWI Candidate ID" placeholder="Not required for initial"></label>
+    <label>Course Title<b class="rg-req" aria-hidden="true">*</b><select name="course_title" required><option value="" selected disabled></option><option>CSWIP 3.0 – Visual Welding Inspector</option><option>CSWIP 3.1 – Welding Inspector</option><option>CSWIP 3.2 – Senior Welding Inspector</option><option>AWS to CSWIP Bridging</option><option>BGAS Grade 2 – Painting Inspector</option><option>BGAS Grade 1 – Senior Painting Inspector</option><option>AWS – Certified Welding Inspector (CWI)</option><option>API 510 / 570 / 653 / 571 / 577 / 580 / 936 / 1169</option><option>NACE CIP Level 1</option><option>NACE CIP Level 2</option><option>ISO Lead Auditor</option><option>Other</option></select></label>
+    <label>TWI Candidate ID<input name="twi_id" placeholder="Not required for initial"></label>
     <div class="ct-row">
-      <label>Seminar Date<b class="rg-req" aria-hidden="true">*</b><input name="Seminar Date" type="date" required></label>
-      <label>Date of Examination<b class="rg-req" aria-hidden="true">*</b><input name="Date of Examination" type="date" required></label>
+      <label>Seminar Date<b class="rg-req" aria-hidden="true">*</b><input name="seminar_date" type="date" required></label>
+      <label>Date of Examination<b class="rg-req" aria-hidden="true">*</b><input name="exam_date" type="date" required></label>
     </div>
 
     <h2>Personal details</h2>
-    <label>Full Name<b class="rg-req" aria-hidden="true">*</b><input name="Full Name" required autocomplete="name" placeholder="As required on certificate"></label>
+    <label>Full Name<b class="rg-req" aria-hidden="true">*</b><input name="full_name" required autocomplete="name" placeholder="As required on certificate"></label>
     <div class="ct-row">
-      <label>Date of Birth<b class="rg-req" aria-hidden="true">*</b><input name="Date of Birth" type="date" required id="rg-dob"></label>
-      <label>Age<b class="rg-req" aria-hidden="true">*</b><input name="Age" type="number" min="15" max="80" inputmode="numeric" required id="rg-age"></label>
+      <label>Date of Birth<b class="rg-req" aria-hidden="true">*</b><input name="dob" type="date" required id="rg-dob"></label>
+      <label>Age<b class="rg-req" aria-hidden="true">*</b><input name="age" type="number" min="15" max="80" inputmode="numeric" required id="rg-age"></label>
     </div>
     <label>Email<b class="rg-req" aria-hidden="true">*</b><input name="email" type="email" required autocomplete="email" class="rg-keep"></label>
     <div class="ct-row">
-      <label>Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="Contact Number" type="tel" required autocomplete="tel"></label>
-      <label>Alternate Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="Alternate Contact Number" type="tel" required></label>
+      <label>Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="phone" type="tel" required autocomplete="tel"></label>
+      <label>Alternate Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="alt_phone" type="tel" required></label>
     </div>
-    <label>Permanent Address<b class="rg-req" aria-hidden="true">*</b><textarea name="Permanent Address" rows="3" required></textarea></label>
-    <label>Pin Code<b class="rg-req" aria-hidden="true">*</b><input name="Permanent Pin Code" inputmode="numeric" maxlength="6" required></label>
-    <label>Communication Address<textarea name="Communication Address" rows="3"></textarea></label>
-    <label>Pin Code<input name="Communication Pin Code" inputmode="numeric" maxlength="6"></label>
+    <label>Permanent Address<b class="rg-req" aria-hidden="true">*</b><textarea name="perm_address" rows="3" required></textarea></label>
+    <label>Pin Code<b class="rg-req" aria-hidden="true">*</b><input name="perm_pin" inputmode="numeric" maxlength="6" required></label>
+    <label>Communication Address<textarea name="comm_address" rows="3"></textarea></label>
+    <label>Pin Code<input name="comm_pin" inputmode="numeric" maxlength="6"></label>
 
     <h2>Qualification</h2>
-    <label>Course Completed<b class="rg-req" aria-hidden="true">*</b><select name="Course Completed" required><option value="" selected disabled></option><option>B.Tech / B.E. – Mechanical</option><option>B.Tech / B.E. – Civil</option><option>B.Tech / B.E. – Electrical</option><option>B.Tech / B.E. – Other</option><option>M.Tech / M.E.</option><option>Diploma – Mechanical</option><option>Diploma – Civil</option><option>Diploma – Electrical</option><option>Diploma – Other</option><option>ITI</option><option>B.Sc / Other degree</option><option>Other</option></select></label>
-    <label>Date of Completion<b class="rg-req" aria-hidden="true">*</b><input name="Date of Completion" type="date" required></label>
+    <label>Course Completed<b class="rg-req" aria-hidden="true">*</b><select name="qualification" required><option value="" selected disabled></option><option>B.Tech / B.E. – Mechanical</option><option>B.Tech / B.E. – Civil</option><option>B.Tech / B.E. – Electrical</option><option>B.Tech / B.E. – Other</option><option>M.Tech / M.E.</option><option>Diploma – Mechanical</option><option>Diploma – Civil</option><option>Diploma – Electrical</option><option>Diploma – Other</option><option>ITI</option><option>B.Sc / Other degree</option><option>Other</option></select></label>
+    <label>Date of Completion<b class="rg-req" aria-hidden="true">*</b><input name="completion_date" type="date" required></label>
     <fieldset class="rg-radio"><legend>NDT Certification</legend>
-      <label><input type="radio" name="NDT Certification" value="No"> No</label>
-      <label><input type="radio" name="NDT Certification" value="Yes"> Yes</label>
+      <label><input type="radio" name="ndt_certification" value="No"> No</label>
+      <label><input type="radio" name="ndt_certification" value="Yes"> Yes</label>
     </fieldset>
 
     <h2>Experience, if any</h2>
-    <label>Company Name<input name="Company Name"></label>
-    <label>Designation<input name="Designation"></label>
+    <label>Company Name<input name="company"></label>
+    <label>Designation<input name="designation"></label>
     <div class="ct-row">
-      <label>From<input name="Experience From" type="date"></label>
-      <label>To<input name="Experience To" type="date"></label>
+      <label>From<input name="exp_from" type="date"></label>
+      <label>To<input name="exp_to" type="date"></label>
     </div>
 
     <input type="text" name="_honey" class="rg-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -105,9 +105,9 @@
     f.querySelectorAll('[required]').forEach(function(el){el.classList.remove('rg-bad');if(!bad&&!String(el.value).trim()){bad=el;}});
     if(bad){bad.classList.add('rg-bad');return [bad,'Please fill in '+bad.closest('label').firstChild.textContent.trim()+'.'];}
     var em=f.elements.email;if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()))return [em,'Please enter a valid email address.'];
-    var ph=[f.elements['Contact Number'],f.elements['Alternate Contact Number']];
+    var ph=[f.elements.phone,f.elements.alt_phone];
     for(var i=0;i<ph.length;i++)if(ph[i].value.replace(/\D/g,'').length<10)return [ph[i],'Please enter a valid 10-digit phone number.'];
-    var pin=f.elements['Permanent Pin Code'];if(!/^\d{6}$/.test(pin.value.trim()))return [pin,'Please enter a 6-digit pin code.'];
+    var pin=f.elements.perm_pin;if(!/^\d{6}$/.test(pin.value.trim()))return [pin,'Please enter a 6-digit pin code.'];
     return null;
   }
   f.addEventListener('submit',function(e){
@@ -116,14 +116,11 @@
     err.textContent='';
     var data={};new FormData(f).forEach(function(v,k){v=String(v).trim();data[k]=(k==='email'||k==='_honey')?v:v.toUpperCase();});
     f.querySelectorAll('input[type=date]').forEach(function(el){if(el.value)data[el.name]=el.value.split('-').reverse().join('/');});
-    if(!data['NDT Certification'])data['NDT Certification']='NOT SPECIFIED';
-    data._subject='Candidate registration: '+data['Full Name']+' – '+data['Course Title'];
-    data._template='table';data._captcha='false';
     btn.disabled=true;btn.textContent='Sending…';
-    fetch('https://formsubmit.co/ajax/info@scoreqc.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||'failed');});})
+    fetch('https://taskportal.scoreqc.com/registration/submit.php',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok){var e=new Error('failed');e.msg=(r.status===422||r.status===429)&&j.message;throw e;}});})
       .then(function(){f.hidden=true;document.getElementById('rg-done').hidden=false;window.scrollTo({top:document.getElementById('rg-done').offsetTop-120,behavior:'smooth'});})
-      .catch(function(){err.innerHTML='Sorry, your registration could not be sent. Please try again, or email it to <a href="mailto:info@scoreqc.com">info@scoreqc.com</a>.';btn.disabled=false;btn.textContent='Submit registration';});
+      .catch(function(e){if(e.msg)err.textContent=e.msg;else err.innerHTML='Sorry, your registration could not be sent. Please try again, or email it to <a href="mailto:info@scoreqc.com">info@scoreqc.com</a>.';btn.disabled=false;btn.textContent='Submit registration';});
   });
 })();
 </script>
