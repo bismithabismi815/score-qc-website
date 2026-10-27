@@ -73,7 +73,13 @@ const json = (status, body) => new Response(JSON.stringify(body), {
 const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const clientIp = req => req.headers.get('cf-connecting-ip') || 'unknown';
 const nowSec = () => Math.floor(Date.now() / 1000);
-const sameOrigin = (req, url) => req.headers.get('origin') === url.origin;
+// Browsers send Origin "null" on form posts from pages with a strict referrer policy, so also
+// accept the browser's own Sec-Fetch-Site verdict.
+const sameOrigin = (req, url) => {
+  const origin = req.headers.get('origin');
+  if (origin === url.origin) return true;
+  return (!origin || origin === 'null') && req.headers.get('sec-fetch-site') === 'same-origin';
+};
 // IST timestamp, e.g. 27/10/2026 14:40
 const istStamp = iso => {
   const d = new Date(new Date(iso).getTime() + 330 * 60000);
@@ -282,5 +288,5 @@ a{color:#1c67b0}.count{color:#5b6b78;font-size:14px;margin:6px 0 16px}.empty{col
 .login input{margin-top:6px}.login button{width:100%}.err{color:#c0392b}
 @media (max-width:600px){.reg th{width:42%}.reg summary .when{margin-left:0;width:100%}}
 </style></head><body><header><b>SCORE QC</b><span>Candidate registrations</span></header><main>${body}</main></body></html>`,
-    { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-frame-options': 'DENY', 'referrer-policy': 'no-referrer' } });
+    { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-frame-options': 'DENY', 'referrer-policy': 'same-origin' } });
 }
