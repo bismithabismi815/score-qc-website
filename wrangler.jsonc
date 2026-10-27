@@ -1,8 +1,18 @@
 {
   "name": "score-qc-website",
+  "main": "_worker/index.js",
   "compatibility_date": "2025-09-01",
+  "workers_dev": false,
   "assets": {
     "directory": "./",
-    "html_handling": "auto-trailing-slash"
-  }
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    // only the registration API and staff page run the Worker; every other path is a static file
+    "run_worker_first": ["/api/*", "/admin", "/admin/*"]
+  },
+  // candidate registrations (staff view them at /admin/; secret ADMIN_PASSWORD set in the dashboard)
+  "d1_databases": [
+    { "binding": "DB", "database_name": "scoreqc-registrations", "database_id": "ec373345-695f-4821-9d81-85136fc2ab8b" }
+  ],
+  "observability": { "enabled": true }
 }
