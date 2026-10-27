@@ -92,7 +92,7 @@
 
   <div class="rg-done" id="rg-done" hidden>
     <h2>Registration received.</h2>
-    <p>Thank you. Your details have been sent to SCORE QC and our team will contact you to confirm your seminar and examination. For anything urgent, call <a href="tel:04714066566">0471 40 66566</a> or email <a href="mailto:info@scoreqc.com">info@scoreqc.com</a>.</p>
+    <p>Thank you. Your details have been received by SCORE QC and our team will contact you to confirm your seminar and examination. For anything urgent, call <a href="tel:04714066566">0471 40 66566</a> or email <a href="mailto:info@scoreqc.com">info@scoreqc.com</a>.</p>
   </div>
 </section>
 </main>
@@ -117,7 +117,7 @@
     var data={};new FormData(f).forEach(function(v,k){v=String(v).trim();data[k]=(k==='email'||k==='_honey')?v:v.toUpperCase();});
     f.querySelectorAll('input[type=date]').forEach(function(el){if(el.value)data[el.name]=el.value.split('-').reverse().join('/');});
     btn.disabled=true;btn.textContent='Sending…';
-    fetch('https://taskportal.scoreqc.com/registration/submit.php',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+    fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok){var e=new Error('failed');e.msg=(r.status===422||r.status===429)&&j.message;throw e;}});})
       .then(function(){f.hidden=true;document.getElementById('rg-done').hidden=false;window.scrollTo({top:document.getElementById('rg-done').offsetTop-120,behavior:'smooth'});})
       .catch(function(e){if(e.msg)err.textContent=e.msg;else err.innerHTML='Sorry, your registration could not be sent. Please try again, or email it to <a href="mailto:info@scoreqc.com">info@scoreqc.com</a>.';btn.disabled=false;btn.textContent='Submit registration';});

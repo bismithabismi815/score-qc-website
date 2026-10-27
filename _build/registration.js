@@ -3,7 +3,7 @@
 // (source in _server/registration/), which emails each registration to info@scoreqc.com via their mail server.
 
 const TO = 'info@scoreqc.com';
-const ENDPOINT = 'https://taskportal.scoreqc.com/registration/submit.php';
+const ENDPOINT = '/api/register';
 
 const COURSES = ['CSWIP 3.0 – Visual Welding Inspector', 'CSWIP 3.1 – Welding Inspector', 'CSWIP 3.2 – Senior Welding Inspector',
   'AWS to CSWIP Bridging', 'BGAS Grade 2 – Painting Inspector', 'BGAS Grade 1 – Senior Painting Inspector',
@@ -87,7 +87,7 @@ module.exports = function registrationPage({ head, nav, footer, esc }) {
 
   <div class="rg-done" id="rg-done" hidden>
     <h2>Registration received.</h2>
-    <p>Thank you. Your details have been sent to SCORE QC and our team will contact you to confirm your seminar and examination. For anything urgent, call <a href="tel:04714066566">0471 40 66566</a> or email <a href="mailto:${TO}">${TO}</a>.</p>
+    <p>Thank you. Your details have been received by SCORE QC and our team will contact you to confirm your seminar and examination. For anything urgent, call <a href="tel:04714066566">0471 40 66566</a> or email <a href="mailto:${TO}">${TO}</a>.</p>
   </div>
 </section>
 </main>
