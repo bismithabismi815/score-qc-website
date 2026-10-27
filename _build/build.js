@@ -223,6 +223,8 @@ fs.mkdirSync(CAMPUS, { recursive: true });
 fs.writeFileSync(path.join(CAMPUS, 'index.html'), require('./campus.js')({ head, nav, footer, esc, waLink, ICON, PHONE, PHONE_LABEL }));
 fs.mkdirSync(path.join(__dirname, '..', 'contact'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, '..', 'contact', 'index.html'), require('./contact.js')({ head, nav, footer, esc, ICON, WA }));
+fs.mkdirSync(path.join(__dirname, '..', 'registration'), { recursive: true });
+fs.writeFileSync(path.join(__dirname, '..', 'registration', 'index.html'), require('./registration.js')({ head, nav, footer, esc }));
 fs.mkdirSync(path.join(__dirname, '..', 'gallery'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, '..', 'gallery', 'index.html'), require('./gallery.js')({ head, nav, footer, esc }));
 const legal = require('./legal.js')({ head, nav, footer, esc });
@@ -230,4 +232,4 @@ legal.forEach(p => {
   fs.mkdirSync(path.join(__dirname, '..', p.dir), { recursive: true });
   fs.writeFileSync(path.join(__dirname, '..', p.dir, 'index.html'), p.html);
 });
-console.log('built', COURSES.length + 4 + legal.length, 'pages');
+console.log('built', COURSES.length + 5 + legal.length, 'pages');
