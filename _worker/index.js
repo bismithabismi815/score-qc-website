@@ -1,6 +1,6 @@
 // Cloudflare Worker for scoreqc.com. Static pages are served from the assets binding;
 // this script only handles:
-//   POST /api/register   – candidate registration form (/registration/) → saved to D1
+//   POST /api/register   – candidate registration form (/preapplication/) → saved to D1
 //   /admin/...           – password-protected staff page to view, export and delete registrations
 // Bindings (wrangler.jsonc): ASSETS, DB (D1). Secret: ADMIN_PASSWORD.
 // Optional email alert: add a send_email binding named EMAIL plus vars NOTIFY_TO and MAIL_FROM

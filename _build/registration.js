@@ -1,6 +1,6 @@
-// Content and template for /registration/ (candidate exam registration). Used by build.js.
-// The site has no server, so the form posts to SCORE QC's own PHP script on the task-portal hosting
-// (source in _server/registration/), which emails each registration to info@scoreqc.com via their mail server.
+// Content and template for /preapplication/ (candidate exam registration). Used by build.js.
+// The form posts to the site's own Cloudflare Worker (_worker/index.js), which saves each registration
+// to the D1 database; staff view them at /admin/. The old /registration/ URL redirects here (_redirects).
 
 const TO = 'info@scoreqc.com';
 const ENDPOINT = '/api/register';
@@ -24,7 +24,7 @@ module.exports = function registrationPage({ head, nav, footer, esc }) {
 <main>
 <section class="ct-hero">
   <div class="wrap">
-    <div class="crumb"><a href="../">HOME</a> / REGISTRATION</div>
+    <div class="crumb"><a href="../">HOME</a> / PRE-APPLICATION</div>
     <div class="kick light"><i></i>EXAM REGISTRATION</div>
     <h1>Candidate <span>registration.</span></h1>
     <p>Register for your certification seminar and examination. Our team will confirm your registration by phone or email.</p>
