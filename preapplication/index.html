@@ -59,10 +59,10 @@
       <label>Date of Birth<b class="rg-req" aria-hidden="true">*</b><input name="dob" type="date" required id="rg-dob"></label>
       <label>Age<b class="rg-req" aria-hidden="true">*</b><input name="age" type="number" min="15" max="80" inputmode="numeric" required id="rg-age"></label>
     </div>
-    <label>Email<b class="rg-req" aria-hidden="true">*</b><input name="email" type="email" required autocomplete="email" class="rg-keep"></label>
+    <label>Email<input name="email" type="email" autocomplete="email" class="rg-keep"></label>
     <div class="ct-row">
       <label>Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="phone" type="tel" required autocomplete="tel"></label>
-      <label>Alternate Contact Number<b class="rg-req" aria-hidden="true">*</b><input name="alt_phone" type="tel" required></label>
+      <label>Alternate Contact Number<input name="alt_phone" type="tel"></label>
     </div>
     <label>Permanent Address<b class="rg-req" aria-hidden="true">*</b><textarea name="perm_address" rows="3" required></textarea></label>
     <label>Pin Code<b class="rg-req" aria-hidden="true">*</b><input name="perm_pin" inputmode="numeric" maxlength="6" required></label>
@@ -104,9 +104,9 @@
     var bad=null;
     f.querySelectorAll('[required]').forEach(function(el){el.classList.remove('rg-bad');if(!bad&&!String(el.value).trim()){bad=el;}});
     if(bad){bad.classList.add('rg-bad');return [bad,'Please fill in '+bad.closest('label').firstChild.textContent.trim()+'.'];}
-    var em=f.elements.email;if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()))return [em,'Please enter a valid email address.'];
+    var em=f.elements.email;if(em.value.trim()&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim()))return [em,'Please enter a valid email address.'];
     var ph=[f.elements.phone,f.elements.alt_phone];
-    for(var i=0;i<ph.length;i++)if(ph[i].value.replace(/\D/g,'').length<10)return [ph[i],'Please enter a valid 10-digit phone number.'];
+    for(var i=0;i<ph.length;i++)if((i===0||ph[i].value.trim())&&ph[i].value.replace(/\D/g,'').length<10)return [ph[i],'Please enter a valid 10-digit phone number.'];
     var pin=f.elements.perm_pin;if(!/^\d{6}$/.test(pin.value.trim()))return [pin,'Please enter a 6-digit pin code.'];
     return null;
   }

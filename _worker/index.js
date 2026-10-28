@@ -15,9 +15,9 @@ const FIELDS = [
   ['full_name', 'Full Name', true, 120],
   ['dob', 'Date of Birth', true, 10],
   ['age', 'Age', true, 3],
-  ['email', 'Email', true, 160],
+  ['email', 'Email', false, 160],
   ['phone', 'Contact Number', true, 20],
-  ['alt_phone', 'Alternate Contact Number', true, 20],
+  ['alt_phone', 'Alternate Contact Number', false, 20],
   ['perm_address', 'Permanent Address', true, 600],
   ['perm_pin', 'Permanent Pin Code', true, 6],
   ['comm_address', 'Communication Address', false, 600],
@@ -113,9 +113,9 @@ async function register(request, env) {
   for (const k of DATE_KEYS) {
     if (data[k] && !/^\d{2}\/\d{2}\/\d{4}$/.test(data[k])) return json(422, { ok: false, message: `${LABEL[k]} is not a valid date.` });
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return json(422, { ok: false, message: 'Please enter a valid email address.' });
+  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return json(422, { ok: false, message: 'Please enter a valid email address.' });
   for (const k of ['phone', 'alt_phone']) {
-    if (data[k].replace(/\D/g, '').length < 10) return json(422, { ok: false, message: `Please enter a valid ${LABEL[k]}.` });
+    if ((k === 'phone' || data[k]) && data[k].replace(/\D/g, '').length < 10) return json(422, { ok: false, message: `Please enter a valid ${LABEL[k]}.` });
   }
   if (!/^\d{6}$/.test(data.perm_pin)) return json(422, { ok: false, message: 'Please enter a 6-digit pin code.' });
   if (data.comm_pin && !/^\d{6}$/.test(data.comm_pin)) return json(422, { ok: false, message: 'Please enter a 6-digit communication pin code.' });
@@ -145,7 +145,7 @@ async function notify(env, data, id, submittedAt) {
   await env.EMAIL.send({
     to: env.NOTIFY_TO,
     from: env.MAIL_FROM,
-    replyTo: data.email,
+    ...(data.email ? { replyTo: data.email } : {}),
     subject: `Candidate registration: ${data.full_name} – ${data.course_title}`,
     html: `<div style="font-family:Arial,sans-serif;font-size:14px"><h2>New candidate registration #${esc(id)}</h2><p>Submitted ${esc(istStamp(submittedAt))} IST</p><table cellpadding="8" style="border-collapse:collapse;max-width:680px;width:100%">${rows}</table><p>All registrations: https://scoreqc.com/admin/</p></div>`,
     text: KEYS.map(k => `${LABEL[k]}: ${data[k] || '—'}`).join('\n'),
@@ -242,7 +242,7 @@ async function admin(request, env, url) {
       <summary><span class="id">#${r.id}</span><b>${esc(r.full_name)}</b><span>${esc(r.course_title)}</span><span>${esc(r.phone)}</span><span class="when">${esc(istStamp(r.submitted_at))}</span></summary>
       <table>${KEYS.map(k => `<tr><th>${esc(LABEL[k])}</th><td>${r[k] ? esc(r[k]).replace(/\n/g, '<br>') : '—'}</td></tr>`).join('')}</table>
       <div class="acts">
-        <a href="mailto:${esc(r.email)}">Email candidate</a>
+        ${r.email ? `<a href="mailto:${esc(r.email)}">Email candidate</a>` : ''}
         <a href="tel:${esc(r.phone.replace(/[^\d+]/g, ''))}">Call</a>
         <form method="post" action="/admin/delete" onsubmit="return confirm('Delete registration #${r.id} (${esc(r.full_name).replace(/'/g, '')})? This cannot be undone.')"><input type="hidden" name="id" value="${r.id}"><button>Delete</button></form>
       </div>
